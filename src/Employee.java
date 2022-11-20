@@ -2,8 +2,8 @@ import java.util.Objects;
 
 public class Employee {
     private static int counter = 0;
-    private final String name;
-    public int id;
+    private String name;
+    public final int id;
     private int salary;
     private int department;
 
@@ -46,5 +46,18 @@ public class Employee {
                         "; Зарплата: " + salary + " руб." +
                         "; Отдел: " + department +
                         ";";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && salary == employee.salary && department == employee.department && Objects.equals(name, employee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id, salary, department);
     }
 }

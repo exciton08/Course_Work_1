@@ -1,56 +1,7 @@
 public class Main {
 
-    private static final Employee[] employees = new Employee[10];
-
-    public static void printEmployees() {
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
-    }
-
-    public static int calculateToSalary() {
-        int sum = 0;
-        for (Employee employee : employees) {
-            sum += employee.getSalary();
-        }
-        return sum;
-    }
-
-    public static Employee findEmployeeWithMinSalary() {
-        Employee result = employees[0];
-        int minSalary = employees[0].getSalary();
-        for (Employee employee : employees) {
-            if (employee.getSalary() < minSalary) {
-                minSalary = employee.getSalary();
-                result = employee;
-            }
-        }
-        return result;
-    }
-
-    public static Employee findEmployeeWithMaxSalary() {
-        Employee result = employees[0];
-        int maxSalary = employees[0].getSalary();
-        for (Employee employee : employees) {
-            if (employee.getSalary() > maxSalary) {
-                maxSalary = employee.getSalary();
-                result = employee;
-            }
-        }
-        return result;
-    }
-
-    public static float calculateAverageSalary() {
-        return calculateToSalary() / (float) employees.length;
-    }
-
-    public static void printFullNames() {
-        for (Employee employee : employees) {
-            System.out.println(employee.getName());
-        }
-    }
-
     public static void main(String[] args) {
+        Employee[] employees = new Employee[10];
         employees[0] = new Employee("Климова Вера Никитична", 18000, 1);
         employees[1] = new Employee("Дубов Денис Иванович", 19000, 2);
         employees[2] = new Employee("Иванов Алексей Эмирович", 17000, 5);
@@ -64,22 +15,22 @@ public class Main {
 
         System.out.println();
         System.out.println("а. Список всех сотрудников со всеми имеющимися по ним данными:");
-        printEmployees();
+        BaseDifficult.printEmployees(employees);
 
         System.out.println();
-        System.out.println("b. Сумма затрат на зарплаты в месяц: " + calculateToSalary() + " руб.");
+        System.out.println("b. Сумма затрат на зарплаты в месяц: " + BaseDifficult.calculateToSalary(employees) + " руб.");
 
         System.out.println();
-        System.out.println("c. Сотрудник с минимальной зарплатой: " + findEmployeeWithMinSalary());
+        System.out.println("c. Сотрудник с минимальной зарплатой: " + BaseDifficult.findEmployeeWithMinSalary(employees));
 
         System.out.println();
-        System.out.println("d. Сотрудник с максимальной зарплатой: " + findEmployeeWithMaxSalary());
+        System.out.println("d. Сотрудник с максимальной зарплатой: " + BaseDifficult.findEmployeeWithMaxSalary(employees));
 
         System.out.println();
-        System.out.println("e. Среднее значение зарплат: " + calculateAverageSalary() + " pуб.");
+        System.out.println("e. Среднее значение зарплат: " + BaseDifficult.calculateAverageSalary(employees) + " pуб.");
 
         System.out.println();
         System.out.println("f. Ф. И. О. всех сотрудников (вывести в консоль):");
-        printFullNames();
+        BaseDifficult.printFullNames(employees);
     }
 }
